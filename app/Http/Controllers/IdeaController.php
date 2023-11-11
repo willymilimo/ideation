@@ -17,8 +17,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use DB;
-
-
+use Exception;
 
 class IdeaController extends Controller
 {
@@ -116,7 +115,7 @@ class IdeaController extends Controller
         ]);
         $staffId = auth()->user()->id;
         $department = Department::find($validatedData['department_id']);
-        $get_all_closure_date = IdeaClosuredate::find(1);
+        $get_all_closure_date = IdeaClosuredate::all()->pop();
 
         $currentDateTime = date('Y-m-d');
         if ($get_all_closure_date->idea_closuredate > $currentDateTime) {
@@ -132,7 +131,7 @@ class IdeaController extends Controller
             
           
             $this->createReactions($idea_id->id);
-            if($validatedData['file'] != null){
+            if(array_key_exists("file", $validatedData) && $validatedData['file'] != null){
                 $files = $request->all();
                 $this->fileUpload($files);
             }
@@ -152,9 +151,13 @@ class IdeaController extends Controller
             'title' => 'Mail from Eweb16 40 University',
             'body' => $message
         ];
-        \Mail::to($userEmail)->send(new \App\Mail\MyTestMail($details));
+        // try {
+        //     \Mail::to($userEmail)->send(new \App\Mail\MyTestMail($details));
+        // } catch (Exception $e) { 
+        //     $e->getMessage();
+        // }
 
-        dd('Email sent ', $userEmail);
+        // dd('Email sent ', $userEmail);
     }
 
     protected function createReactions($id)

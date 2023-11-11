@@ -97,11 +97,24 @@ class ReportsController extends Controller
         return view('reports.ideas_per_dept', compact('ideas_per_dept'));
     }
 
-    public function ideaPercentage(){
+    public function ideasPerCategory()
+    {
+        $sql = "SELECT  c.categoryName, c.categoryDescriptions, count(*) as ideas
+                FROM ideas i
+                LEFT JOIN categories c ON  i.categoryID = c.id
+                GROUP BY  categoryName, categoryDescriptions;";
+        $ideas_per_category = DB::select($sql);
+
+        return view('reports.ideas_per_category', compact('ideas_per_category'));
+    }
+
+    public function ideaPercentage()
+    {
         return view('reports.ideapercentage');
     }
 
-    public function getTotalideas(){
+    public function getTotalideas()
+    {
 
         $sql = "SELECT  dpt.departmentName, count(*) as Number_of_ideas
                 FROM ideas 
@@ -110,7 +123,5 @@ class ReportsController extends Controller
         $ideas_per_dept = DB::select($sql);
         // dd(response()->json($ideas_per_dept));
         return response()->json($ideas_per_dept);
-  
-
     }
 }

@@ -52,7 +52,7 @@ Route::get('send-mail', function () {
         'body' => 'Your account has been created '
     ];
 
-    \Mail::to('chintalima49@gmail.com')->send(new \App\Mail\MyTestMail($details));
+    \Mail::to('wmoonga@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
     // dd("Email is Sent.");
 });
@@ -63,7 +63,7 @@ Route::post('/closure/date/store', 'App\Http\Controllers\IdeaController@setClosu
 
 
 Route::get('/reports/ideas/per/department', 'App\Http\Controllers\ReportsController@ideasPerDept')->name('reportIdeasPerDept');
-Route::get('/reports/ideas/percentage/department', 'App\Http\Controllers\ReportsController@ideaPercentage')->name('ideaPercentage');
+Route::get('/reports/ideas/percentage/department', 'App\Http\Controllers\ReportsController@ideasPerCategory')->name('ideasPerCategory');
 
 
 Route::get('get/ideas/totals', 'App\Http\Controllers\ReportsController@getTotalideas');

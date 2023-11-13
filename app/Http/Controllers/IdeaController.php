@@ -28,22 +28,9 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        //
-        $sql = "SELECT 
-                    ideas.id as ideasID, 
-                    usr.name as name, 
-                    ideas.created_at as createdDate, 
-                    ideas.title as title, 
-                    ideas.idealDetails as IdealDetails,
-                    rt.thumbsUP as thumbUps, 
-                    rt.thumbsDown as thumbsDown 
-                FROM ideas ideas 
-                LEFT JOIN users usr ON usr.id = ideas.staffID 
-                LEFT JOIN reactions rt ON rt.id = ideas.reactiondID";
-
-        $idea_list = DB::table('ideas')
+        $ideas = DB::table('ideas')
             ->leftJoin('users', 'users.id', '=', 'ideas.staffID')
-            ->leftJoin('reactions', 'reactions.id', '=', 'ideas.reactiondID')
+            ->leftJoin('reactions', 'reactions.id', '=', 'ideas.reactionID')
             ->select(
                 'ideas.id AS ideasID',
                 'users.name AS name',
@@ -55,8 +42,10 @@ class IdeaController extends Controller
             )
             ->orderByDesc('ideasID')
             ->paginate(5);
+
+        $ideas->withPath('/ideas');
         
-        return view('ideas.index', compact('idea_list'));
+        return view('ideas.index', compact('ideas'));
     }
 
     public function paginate($items, $perPage = 5, $page = null, $options = [])
@@ -169,7 +158,7 @@ class IdeaController extends Controller
         ]);
 
         $ideas =  Idea::find($id);
-        $ideas->reactiondID = $reactions_id->id;
+        $ideas->reactionID = $reactions_id->id;
         $ideas->save();
     }
 
@@ -297,7 +286,7 @@ class IdeaController extends Controller
                     rt.thumbsDown as thumbsDown 
                 FROM ideas ideas 
                 LEFT JOIN users usr ON usr.id = ideas.staffID 
-                LEFT JOIN reactions rt ON rt.id = ideas.reactiondID
+                LEFT JOIN reactions rt ON rt.id = ideas.reactionID
                 WHERE ideas.id = ?";
 
         $idea_list = DB::select($sql, [$id]);

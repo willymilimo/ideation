@@ -46,7 +46,7 @@ class HomeController extends Controller
           rt.thumbsDown as thumbsDown 
       FROM ideas ideas 
       LEFT JOIN users usr ON usr.id = ideas.staffID 
-      LEFT JOIN reactions rt ON rt.id = ideas.reactiondID";
+      LEFT JOIN reactions rt ON rt.id = ideas.reactionID";
 
         $data = DB::select($sql);
         $idea_list = $this->paginate($data);

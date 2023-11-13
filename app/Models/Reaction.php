@@ -42,6 +42,6 @@ class Reaction extends Model
      */
     public function ideas()
     {
-        return $this->hasMany('App\Idea', 'reactiondID');
+        return $this->hasMany('App\Idea', 'reactionID');
     }
 }

@@ -108,10 +108,10 @@ class ReportsController extends Controller
         return view('reports.ideas_per_category', compact('ideas_per_category'));
     }
 
-    public function ideaPercentage()
-    {
-        return view('reports.ideapercentage');
-    }
+    // public function ideaPercentage()
+    // {
+    //     return view('reports.ideapercentage');
+    // }
 
     public function getTotalideas()
     {

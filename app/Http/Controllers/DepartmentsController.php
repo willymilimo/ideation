@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 
@@ -26,7 +27,8 @@ class DepartmentsController extends Controller
      */
     public function create()
     {
-        $qa_coordinators = DB::table('users')->where('roleID', '=', '2')->get();
+        $qa_coordinators = User::where('roleID', '=', '2')->get();
+
         return view('departments.create', compact('qa_coordinators'));
     }
 
@@ -81,9 +83,23 @@ class DepartmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    protected function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id' => 'required|string|no_only_spaces',
+            'departmentName' => 'required|min:2|max:200|unique:departments,email',
+            'qaCoodinatorID'=> 'required|exists:users,id'
+        ]);
+
+        $user = Department::findOrFail($id);
+
+        if (!is_null($user)) {
+            $user->departmentName = $request['departmentName'];
+            $user->qaCoodinatorID = $request['qaCoodinatorID'];
+            $user->save();
+        }
+        
+        return redirect('users')->with('success', 'User updated successfully');
     }
 
     /**

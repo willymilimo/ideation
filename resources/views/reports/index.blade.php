@@ -24,7 +24,7 @@
 
     <!-- Earnings (Annual) Card Example -->
     <div class="col-12 mb-4">
-        <a href="{{ route('ideaPercentage') }}">
+        <a href="{{ route('ideasPerCategory') }}">
             <div class="card border-left-success shadow h-100 py-2" style="border-left-width: 20px !important;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">

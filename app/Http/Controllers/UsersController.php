@@ -95,30 +95,30 @@ class UsersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Create a new user instance after a valid registration.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  array  $data
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Models\User
      */
-    public function update(Request $request, $id)
+    protected function update(Request $request, $id)
     {
-        //
-
-        $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'roleID' => 'required|exists:roles,id',
-            'email' => 'required'
+        $request->validate([
+            'name' => 'required|string|no_only_spaces',
+            'email' => 'required|email',
+            'roleID' => 'required|exists:roles,id'
         ]);
 
-        $input = $request->all();
-        $user = User::find($id);
-        $user->update($input);
+        $user = User::findOrFail($id);
 
-
-        return redirect()->route('users.index')
-            ->with('success', 'User updated Successfully');
+        if (!is_null($user)) {
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+            $user->roleID = $request['roleID'];
+            $user->save();
+        }
+        
+        return redirect('users')->with('success', 'User updated successfully');
     }
 
     /**

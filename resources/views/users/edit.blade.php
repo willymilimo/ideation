@@ -12,20 +12,24 @@
                         @method('PATCH')
                         @csrf
 
-                        <label for=""><strong>First Name</strong> </label>
-                        <input type="text" class="form-control @error('firstName') is-invalid @enderror" name="firstName" value="{{ $users->firstName}}">
-
-                        <label for=""><strong>Last name</strong> </label>
-                        <input type="text" class="form-control @error('lastName') is-invalid @enderror" name="lastName" value="{{ $users->lastName}}">
+                        <label for=""><strong>Name</strong> </label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $users->name}}">
 
                         <label for=""><strong>Email</strong> </label>
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $users->email}}">
 
                         <label for=""><strong> Role</strong> </label>
                         <select name="roleID" id="" class="form-control @error('roleID') is-invalid @enderror">
-                        <option class="form-control ">--select role</option>
+                        <option class="form-control ">--Select Role--</option>
                         @foreach($roles as $role)
-                        <option value="{{$role->id}}" name="roleID">{{$role->roleName}}</option>
+                        <option 
+                            value="{{$role->id}}" 
+                            @if($role->id == $users->roleID)
+                                selected
+                            @endif
+                            name="roleID">
+                            {{$role->roleName}}
+                        </option>
                         @endforeach
                         </select>
                         @error('roleID')

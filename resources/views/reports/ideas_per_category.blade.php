@@ -8,7 +8,7 @@
             <tr>
                 <th>#</th>
                 <th>Category</th>
-                <th>Category</th>
+                <th>Description</th>
                 <th>Number of Ideas</th>
             </tr>
         </thead>

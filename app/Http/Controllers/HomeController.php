@@ -35,26 +35,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-          //
-          $sql = "SELECT 
-          ideas.id as ideasID, 
-          usr.name as name, 
-          ideas.created_at as createdDate, 
-          ideas.title as title, 
-          ideas.idealDetails as IdealDetails,
-          rt.thumbsUP as thumbUps, 
-          rt.thumbsDown as thumbsDown 
-      FROM ideas ideas 
-      LEFT JOIN users usr ON usr.id = ideas.staffID 
-      LEFT JOIN reactions rt ON rt.id = ideas.reactionID";
+        $ideas = DB::table('ideas')
+            ->leftJoin('users', 'users.id', '=', 'ideas.staffID')
+            ->leftJoin('reactions', 'reactions.id', '=', 'ideas.reactionID')
+            ->select(
+                'ideas.id AS ideasID',
+                'users.name AS name',
+                'ideas.created_at AS createdDate',
+                'ideas.title as title',
+                'ideas.idealDetails AS IdealDetails',
+                'reactions.thumbsUP AS thumbUps',
+                'reactions.thumbsDown AS thumbsDown'
+            )
+            ->orderByDesc('ideasID')
+            ->paginate(5);
 
-        $data = DB::select($sql);
-        $idea_list = $this->paginate($data);
-
-        return view('home', compact('idea_list'));
+        return view('home', compact('ideas'));
     }
     
-    public function paginate($items, $perPage = 4, $page = null, $options = [])
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);

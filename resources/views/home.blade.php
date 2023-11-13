@@ -16,7 +16,7 @@
 
                     <div class="col-md-12">
                         <div class="feed p-2">
-                            @foreach ($idea_list as $idea)
+                            @foreach ($ideas as $idea)
                             <div class="bg-white border mt-2">
                                 <div class="bg-gradient-light">
                                     <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
@@ -50,7 +50,7 @@
                             </div>
                             @endforeach
                             <div class="row">
-                                <Span class="pull-left p-5">{{ $idea_list->links() }}</Span>
+                                <Span class="pull-left p-5">{{ $ideas->links() }}</Span>
                             </div>
                         </div>
                     </div>

@@ -15,8 +15,8 @@ class CreateIdeaClosuredates extends Migration
     {
         Schema::create('idea_closuredates', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('idea_closuredate');
-            $table->timestamp('comment_closuredate');
+            $table->timestamp('idea_closuredate')->nullable();
+            $table->timestamp('comment_closuredate')->nullable();
             $table->string('academic_Year');
             $table->timestamps();
         });

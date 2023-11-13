@@ -53,12 +53,13 @@ class IdeaController extends Controller
                 'reactions.thumbsUP AS thumbUps',
                 'reactions.thumbsDown AS thumbsDown'
             )
-            ->paginate(3);
+            ->orderByDesc('ideasID')
+            ->paginate(5);
         
         return view('ideas.index', compact('idea_list'));
     }
 
-    public function paginate($items, $perPage = 4, $page = null, $options = [])
+    public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);

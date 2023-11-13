@@ -17,8 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigInteger('id', true);
             $table->string('categoryName', 100)->nullable();
             $table->string('categoryDescriptions', 200);
-            $table->timestamp('createdAt')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

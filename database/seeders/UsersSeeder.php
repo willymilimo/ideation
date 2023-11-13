@@ -1,66 +1,64 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Seeders;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class UsersSeeder extends Seeder
 {
     /**
-     * Define the model's default state.
+     * Run the database seeds.
      *
-     * @return array
+     * @return void
      */
-    public function definition()
+    public function run()
     {
-        return [
+        $faker = Faker::create();
+        DB::table('users')->insert([
             [
-                'name' => $this->faker->name(),
-                'email' => $this->faker->unique()->safeEmail(),
+                'name' => "Admin",
+                'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'roleID' => 1, // admin
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
-                'name' => $this->faker->name(),
-                'email' => $this->faker->unique()->safeEmail(),
+                'name' => $faker->name(),
+                'email' => $faker->unique()->safeEmail(),
+                'email_verified_at' => now(),
+                'roleID' => 1, // admin
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'remember_token' => Str::random(10),
+            ],
+            [
+                'name' => $faker->name(),
+                'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'roleID' => 2, // QA Coordinator
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
-                'name' => $this->faker->name(),
-                'email' => $this->faker->unique()->safeEmail(),
+                'name' => $faker->name(),
+                'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'roleID' => 1, // Staff
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
-                'name' => $this->faker->name(),
-                'email' => $this->faker->unique()->safeEmail(),
+                'name' => $faker->name(),
+                'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'roleID' => 1, // Quality Assurance Manager
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ]
-        ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function unverified()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'email_verified_at' => null,
-            ];
-        });
+        ]);
     }
 }

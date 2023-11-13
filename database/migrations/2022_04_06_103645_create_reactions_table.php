@@ -18,6 +18,7 @@ class CreateReactionsTable extends Migration
             $table->string('thumbsUP', 100)->nullable();
             $table->string('thumbsDown', 100)->nullable();
             $table->bigInteger('ideaID')->nullable()->index('reactions_FK');
+            $table->timestamps();
         });
     }
 

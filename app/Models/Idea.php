@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
  * @property integer $staffId
  * @property string $title
- * @property integer $reactiondID
+ * @property integer $reactionID
  * @property string $viewCount
  * @property string $status
  * @property integer $categoryID
  * @property integer $departmentID
  * @property Department $department
- * @property Catergory $catergory
+ * @property Category $catergory
  * @property User $user
  * @property Reaction $reaction
  * @property Comment[] $comments
@@ -30,10 +31,12 @@ class Idea extends Model
      */
     protected $keyType = 'integer';
 
+    use HasFactory;
+
     /**
      * @var array
      */
-    protected $fillable = ['staffId', 'title', 'reactiondID', 'viewCount', 'status', 'categoryID', 'departmentID', 'idealDetails','created_at', 'updated_at'];
+    protected $fillable = ['staffId', 'title', 'reactionID', 'viewCount', 'status', 'categoryID', 'departmentID', 'idealDetails','created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -64,7 +67,7 @@ class Idea extends Model
      */
     public function reaction()
     {
-        return $this->belongsTo('App\Reaction', 'reactiondID');
+        return $this->belongsTo('App\Reaction', 'reactionID');
     }
 
     /**

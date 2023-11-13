@@ -15,12 +15,12 @@ class CreateIdeasTable extends Migration
     {
         Schema::create('ideas', function (Blueprint $table) {
             $table->bigInteger('id', true);
-            $table->unsignedBigInteger('staffId')->index('idea_FK_2');
-            $table->bigInteger('reactiondID')->nullable()->index('idea_FK_3');
+            $table->unsignedBigInteger('staffId')->index('idea_user_id_fk');
+            $table->bigInteger('reactionID')->nullable()->index('idea_reaction_id_fk');
             $table->string('viewCount', 100)->nullable();
             $table->string('status', 100)->nullable();
-            $table->bigInteger('categoryID')->index('idea_FK_1');
-            $table->bigInteger('departmentID')->index('idea_FK');
+            $table->bigInteger('categoryID')->index('idea_category_fk');
+            $table->bigInteger('departmentID')->index('idea_department_id_fk');
             $table->text('idealDetails');
             $table->string('title', 100)->nullable();
             $table->timestamps();

@@ -14,7 +14,7 @@ class AddForeignKeysToReactionsTable extends Migration
     public function up()
     {
         Schema::table('reactions', function (Blueprint $table) {
-            $table->foreign(['ideaID'], 'reactions_FK')->references(['id'])->on('ideas')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['ideaID'], 'reactions_FK')->references(['id'])->on('ideas')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

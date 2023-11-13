@@ -14,7 +14,7 @@ class AddForeignKeysToDepartmentsTable extends Migration
     public function up()
     {
         Schema::table('departments', function (Blueprint $table) {
-            $table->foreign(['qaCoodinatorID'], 'departments_FK')->references(['id'])->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['qaCoodinatorID'], 'departments_FK')->references(['id'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

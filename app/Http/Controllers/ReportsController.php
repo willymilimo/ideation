@@ -91,7 +91,7 @@ class ReportsController extends Controller
         $sql = "SELECT  dpt.departmentName, departmentID, count(*) as Number_of_ideas
                 FROM ideas 
                 LEFT JOIN departments dpt ON  ideas.departmentID = dpt.id
-                GROUP BY  departmentID;";
+                GROUP BY  departmentID, departmentName";
         $ideas_per_dept = DB::select($sql);
 
         return view('reports.ideas_per_dept', compact('ideas_per_dept'));

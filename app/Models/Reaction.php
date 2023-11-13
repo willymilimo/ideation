@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -20,6 +21,8 @@ class Reaction extends Model
      * @var string
      */
     protected $keyType = 'integer';
+
+    use HasFactory;
 
     /**
      * @var array

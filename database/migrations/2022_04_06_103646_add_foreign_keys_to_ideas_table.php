@@ -14,10 +14,10 @@ class AddForeignKeysToIdeasTable extends Migration
     public function up()
     {
         Schema::table('ideas', function (Blueprint $table) {
-            $table->foreign(['departmentID'], 'idea_FK')->references(['id'])->on('departments')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign(['categoryID'], 'idea_FK_1')->references(['id'])->on('categories')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign(['staffId'], 'idea_FK_2')->references(['id'])->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign(['reactiondID'], 'idea_FK_3')->references(['id'])->on('reactions')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign(['departmentID'], 'idea_FK')->references(['id'])->on('departments')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['categoryID'], 'idea_FK_1')->references(['id'])->on('categories')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['staffId'], 'idea_FK_2')->references(['id'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['reactionID'], 'idea_FK_3')->references(['id'])->on('reactions')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

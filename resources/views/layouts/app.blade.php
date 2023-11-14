@@ -120,7 +120,7 @@
                         <a class="collapse-item" href="{{ route('users.index') }}">Delete User</a>
                         @endif
                         @if (Auth::user()->roleID == 2 || Auth::user()->roleID == 1)
-                        <a class="collapse-item" href="{{ route('closureDate') }}">Closure Date</a>
+                        <a class="collapse-item" href="{{ route('closureDates.index') }}">Closure Dates</a>
                         @endif
                     </div>
                 </div>

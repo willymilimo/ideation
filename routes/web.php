@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\IdeaClosureDatesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ReportsController;
 
@@ -32,6 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('categories', CategoriesController::class);
 Route::resource('ideas', IdeaController::class);
 Route::resource('users', UsersController::class);
+Route::resource('closureDates', IdeaClosureDatesController::class);
 Route::resource('roles', RolesController::class);
 Route::resource('reports', ReportsController::class);
 Route::get('thumbsUp/{id}', 'App\Http\Controllers\IdeaController@thumbUp')->name('thumbsUp');

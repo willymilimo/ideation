@@ -19,7 +19,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-
                         </div>
 
                         <div class="col-md-4 mt-3"><label for=""> <strong>Comment Closure Date</strong></label>
@@ -30,7 +29,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-
                         </div>
 
                         <div class="col-md-4 mt-3">
@@ -47,14 +45,12 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-
                         </div>
 
                         <div class=" col-md- 4 mt-5">
                             <a href="{{ route('home') }}" class="btn btn-warning">Back</a>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
-
                     </form>
 
                 </div>

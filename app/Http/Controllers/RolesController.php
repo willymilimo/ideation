@@ -68,7 +68,7 @@ class RolesController extends Controller
     {
         $role = Role::findOrFail($id);
 
-        return view('categories.edit', compact('role'));
+        return view('roles.edit', compact('role'));
     }
 
     /**

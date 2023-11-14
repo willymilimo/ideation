@@ -20,7 +20,7 @@
 <div class="container mt-4 mb-5">
 
     <div class="d-flex justify-content-center row">
-        <div class="col-4">
+        <!-- <div class="col-4">
             <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Most Popular Ideas <span class="badge bg-primary ml-2 text-color-sidebar">2</span>
@@ -29,9 +29,8 @@
                     <li class="list-group-item">Latest Idea <span class="badge bg-primary ml-2 text-color-sidebar">15</span></li>
                 </ul>
             </div>
-
-        </div>
-        <div class="col-md-8">
+        </div> -->
+        <div class="col-12">
             <div class="feed p-2">
                 <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white border">
                     <div class="feed-text px-2">
@@ -57,18 +56,16 @@
                     </div>
 
                     <div class="d-flex justify-content-end socials p-2 py-3">
-                        <a class="ml-1" href="{{ route('thumbsUp', $idea->ideasID) }}">
+                        <a class="mr-3 text-success" href="{{ route('thumbsUp', $idea->ideasID) }}">
                             {{ $idea->thumbUps }}
-                            <i class="ml-1 fa fa-thumbs-up"></i>
+                            <i class="ml-1 fa fa-thumbs-up text-success"></i>
                         </a>
-
-                        <a href="{{ route('thumbsDown', $idea->ideasID) }}">
-                            {{ $idea->thumbsDown }}<i class="ml-1 fa fa-thumbs-down"></i>
+                        <a href="{{ route('thumbsDown', $idea->ideasID) }}" class="text-danger mr-3">
+                            {{ $idea->thumbsDown }}<i class="ml-1 fa fa-thumbs-down text-danger"></i>
                         </a>
-                        <a href="{{ route('comments', $idea->ideasID) }}">
+                        <a href="{{ route('comments', $idea->ideasID) }}" class="text-dark">
                             <i class="fa fa-comments"></i>
                         </a>
-                        <i class="fa fa-share"></i>
                     </div>
                 </div>
                 @endforeach

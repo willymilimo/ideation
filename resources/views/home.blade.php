@@ -21,8 +21,6 @@
                                 <div class="bg-gradient-light">
                                     <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
                                         <div class="d-flex flex-row align-items-center feed-text px-2">
-                                            {{-- <img class="rounded-circle"
-                                        src="href=//imgur.com/a/WtjqS9qg" width="45"> --}}
                                             <div class="d-flex flex-column flex-wrap ml-2">
                                                 <div><i class="fas fa-user-astronaut mr-2"></i></i><span class="font-weight-bold text-gray-800">{{ $idea->name }}</span></div>
                                                 <div><i class="far fa-clock mr-2"></i><span class="text-black-50 time text-gray-800">{{ $idea->createdDate }}</span></div>

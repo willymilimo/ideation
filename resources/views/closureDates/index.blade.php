@@ -15,6 +15,11 @@
     </div>
     @endif
 </div>
+<div class="row mb-4">
+    <a class="btn btn-primary" href="{{ route('closureDates.create') }}">
+        Add Closure Date
+    </a>
+</div>
 <div class="row">
     <table class="table table-bordered">
         <thead>

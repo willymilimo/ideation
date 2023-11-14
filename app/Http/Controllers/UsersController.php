@@ -38,7 +38,7 @@ class UsersController extends Controller
     public function create()
     {
 
-        $roles = Role::all()->paginate(5);
+        $roles = Role::all();
         return view('users.create', compact('roles'));
     }
 

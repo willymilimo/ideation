@@ -24,7 +24,8 @@ class UsersController extends Controller
         $users = DB::table('users')
             ->select('users.id', 'name', 'email', 'users.created_at', 'roles.roleName')
             ->leftJoin('roles', 'users.roleID', '=', 'roles.id')
-            ->get();
+            // ->get()
+            ->paginate(5);
         return view('users.index', compact('users'));
     }
 
@@ -37,7 +38,7 @@ class UsersController extends Controller
     public function create()
     {
 
-        $roles = Role::all();
+        $roles = Role::all()->paginate(5);
         return view('users.create', compact('roles'));
     }
 
@@ -50,20 +51,20 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $data =  $this->validate($request, [
-            'name' => ['required', 'string', 'max:255'],
+            // 'name' => ['required', 'string', 'max:255'],
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role_id' => ['required']
+            'roleID' => ['required']
         ]);
 
         User::create([
-            'name' => $data['name'],
+            'name' => $data['firstName'] . ' ' . $data['lastName'],
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
             'email' => $data['email'],
-            'roleID' => $data['role_id'],
+            'roleID' => $data['roleID'],
             'password' => Hash::make($data['password']),
         ]);
         return redirect('users')->with('success', 'Successfully added a  user');

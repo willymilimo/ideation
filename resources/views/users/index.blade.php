@@ -21,31 +21,32 @@
                 <th scope="col">Action</th>
             </tr>
         </thead>
-        {{ $no = 1 }}
-        @foreach ($users as $user)
-        <tr>
-            <th scope="row">{{ $no++ }}</th>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->roleName }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->created_at }}</td>
-            <td>{{ $user->id }}</td>
-            <td>
-                <span style='cursor: pointer'>
-                    <i class="fas fa-trash" data-target="#exampleModalCenter{{$user->id}}" data-toggle="modal" style="color:red"></i>
-                </span>
-                <span class="fa-passwd-reset fa-stack ml-3" data-toggle="tooltip" title="Password Reset">
-                    <a href="#" style="text-decoration: none;">
-                        <i class="fa fa-undo fa-stack-2x" style="color:#1e4afc"></i>
-                        <i class="fa fa-lock fa-stack-1x"></i>
-                    </a>
-                </span>
-                <span class="ml-3">
-                    <a href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit" style="color:green" aria-hidden="true"></i></a>
-                </span>
-            </td>
-        </tr>
-        @endforeach
+        <tbody>
+            {{ $no = 1 }}
+            @foreach ($users as $user)
+            <tr>
+                <th scope="row">{{ $no++ }}</th>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->roleName }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->created_at }}</td>
+                <td>{{ $user->id }}</td>
+                <td>
+                    <span style='cursor: pointer'>
+                        <i class="fas fa-trash" data-target="#exampleModalCenter{{$user->id}}" data-toggle="modal" style="color:red"></i>
+                    </span>
+                    <span class="fa-passwd-reset fa-stack ml-3" data-toggle="tooltip" title="Password Reset">
+                        <a href="#" style="text-decoration: none;">
+                            <i class="fa fa-undo fa-stack-2x" style="color:#1e4afc"></i>
+                            <i class="fa fa-lock fa-stack-1x"></i>
+                        </a>
+                    </span>
+                    <span class="ml-3">
+                        <a href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit" style="color:green" aria-hidden="true"></i></a>
+                    </span>
+                </td>
+            </tr>
+            @endforeach
 
         </tbody>
     </table>
@@ -83,5 +84,9 @@
     </div>
     @endforeach
     <!-- =====================modal end ====================== -->
+
+    <div class="row">
+        <Span class="pull-left p-5">{{ $users->links() }}</Span>
+    </div>
 </div>
 @endsection

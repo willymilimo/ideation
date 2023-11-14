@@ -11,7 +11,7 @@
                         <form method="POST" action="{{ route('users.store') }}">
                             @csrf
 
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
@@ -24,11 +24,11 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="row mb-3">
                                 <label for="firstName"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('firstName') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="firstName" type="text"
@@ -44,7 +44,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="lastName"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('LastName') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="lastName" type="text"
@@ -80,9 +80,9 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('User Role') }}</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control"   id="role_id" type="text" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ old('role_id') }}" required >
+                                    <select class="form-control"   id="roleID" type="text" class="form-control @error('roleID') is-invalid @enderror" name="roleID" value="{{ old('roleID') }}" required >
                                          @foreach($roles as $rol)
-                                        <option name="role_id" value="{{ $rol->id }}">{{ $rol->roleName }}</option>
+                                        <option name="roleID" value="{{ $rol->id }}">{{ $rol->roleName }}</option>
                                         @endforeach
                                     </select>
 

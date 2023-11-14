@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RolesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\IdeaController;
@@ -31,6 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('categories', CategoriesController::class);
 Route::resource('ideas', IdeaController::class);
 Route::resource('users', UsersController::class);
+Route::resource('roles', RolesController::class);
 Route::resource('reports', ReportsController::class);
 Route::get('thumbsUp/{id}', 'App\Http\Controllers\IdeaController@thumbUp')->name('thumbsUp');
 Route::get('thumbsDown/{id}', 'App\Http\Controllers\IdeaController@thumbDown')->name('thumbsDown');
@@ -41,9 +43,10 @@ Route::post('/postComment', 'App\Http\Controllers\IdeaController@commentStore')-
 Route::resource('departments', DepartmentsController::class);
 
 
-Route::get('/view/roles', [App\Http\Controllers\UsersController::class, 'viewRoles'])->name('viewRoles');
-Route::get('/create/roles', [App\Http\Controllers\UsersController::class, 'createRoles'])->name('createRoles');
-Route::post('/store/roles', [App\Http\Controllers\UsersController::class, 'storeRoles'])->name('storeRoles');
+// Route::get('/view/roles', [App\Http\Controllers\UsersController::class, 'viewRoles'])->name('viewRoles');
+// Route::get('/create/roles', [App\Http\Controllers\UsersController::class, 'createRoles'])->name('createRoles');
+// Route::post('/store/roles', [App\Http\Controllers\UsersController::class, 'storeRoles'])->name('storeRoles');
+
 
 
 Route::get('send-mail', function () {

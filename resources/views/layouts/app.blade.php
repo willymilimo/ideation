@@ -114,10 +114,10 @@
                         <h6 class="collapse-header">System Management</h6>
                         <a class="collapse-item" href="{{ route('users.index') }}">View Users</a>
                         @if (Auth::user()->roleID == 1)
-                        <a class="collapse-item" href="{{ route('viewRoles') }}">View a Roles</a>
-                        <a class="collapse-item" href="{{ route('createRoles') }}">Add a Roles</a>
-                        <a class="collapse-item" href="{{ route('users.create') }}">Add a User</a>
-                        <a class="collapse-item" href="{{ route('users.index') }}">Delete a user</a>
+                        <a class="collapse-item" href="{{ route('roles.index') }}">View Roles</a>
+                        <a class="collapse-item" href="{{ route('roles.create') }}">Add Roles</a>
+                        <a class="collapse-item" href="{{ route('users.create') }}">Add User</a>
+                        <a class="collapse-item" href="{{ route('users.index') }}">Delete User</a>
                         @endif
                         @if (Auth::user()->roleID == 2 || Auth::user()->roleID == 1)
                         <a class="collapse-item" href="{{ route('closureDate') }}">Closure Date</a>

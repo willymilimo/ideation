@@ -20,10 +20,10 @@ class UsersSeeder extends Seeder
         $faker = Faker::create();
         $users = [
             [
-                'firstName' => $faker->firstName(),
-                'lastName' => $faker->lastName(),
+                'firstName' => "Longa",
+                'lastName' => "Bantubonse",
                 'name' => "Admin",
-                'email' => $faker->unique()->safeEmail(),
+                'email' => "admin@admin",
                 'email_verified_at' => now(),
                 'roleID' => 1, // admin
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
